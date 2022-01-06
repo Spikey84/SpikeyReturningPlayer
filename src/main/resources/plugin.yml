@@ -1,0 +1,7 @@
+main: me.spikey.returningplayer.Main
+
+name: SpikeyReturningPlayer
+version: 1.0
+author: SpikeyNoob
+
+api-version: 1.13
