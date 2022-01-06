@@ -15,6 +15,6 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void preLogin(AsyncPlayerPreLoginEvent event) {
         if (!event.getLoginResult().equals(AsyncPlayerPreLoginEvent.Result.KICK_FULL)) return;
-        if (Bukkit.getOfflinePlayer(event.getUniqueId()).hasPlayedBefore()) event.setLoginResult(AsyncPlayerPreLoginEvent.Result.ALLOWED);
+        if (!Bukkit.getOfflinePlayer(event.getUniqueId()).hasPlayedBefore()) event.setLoginResult(AsyncPlayerPreLoginEvent.Result.ALLOWED);
     }
 }
