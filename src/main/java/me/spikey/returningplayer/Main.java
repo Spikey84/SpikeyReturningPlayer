@@ -10,6 +10,7 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ public class Main extends JavaPlugin implements Listener {
     public void onEnable() {
         this.bypassFull = Lists.newArrayList();
         Bukkit.getPluginManager().registerEvents(this, this);
+        Bukkit.getLogger().info(Bukkit.getServer().getMaxPlayers() + "");
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -31,7 +33,6 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void login(PlayerLoginEvent event) {
-
         if (event.getResult().equals(PlayerLoginEvent.Result.KICK_FULL) && bypassFull.contains(event.getPlayer().getUniqueId())) {
             event.allow();
             event.setResult(PlayerLoginEvent.Result.ALLOWED);
